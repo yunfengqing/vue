@@ -7,6 +7,7 @@ var save={
         vue.prototype.del=function(attr){
             sessionStorage.removeItem(attr);
         }
+
         vue.prototype.get=function(attr,attr1){
             if(attr1){
                 return sessionStorage[attr]?JSON.parse(sessionStorage[attr])[attr1]:"";

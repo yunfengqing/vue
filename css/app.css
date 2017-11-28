@@ -2,6 +2,17 @@
     padding: 0;margin: 0;list-style: none;text-decoration: none;
     box-sizing: border-box;
 }
+.home{
+    position: absolute;left:0;top:0;
+    width:100%;
+}
+.Doc{
+    width:100vw;
+    height:100vh;
+    padding-top:44px;
+    position: absolute;
+    left:0;top:0;
+}
 html,body{
     width: 100%;
     height:100%;
@@ -79,6 +90,7 @@ html,body{
     height: 400px;
 }
 .info{
+    height: 20px;
     position: relative;
 }
 .logout{

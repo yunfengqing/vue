@@ -1,6 +1,6 @@
 var Home=Vue.component("Home",{
     template:`
-    <div>
+    <div class="home">
         <Nav></Nav>
         <div class="homeCon">
         <img class="nav-img" src="http://www.sxuek.com/uploadfile/2017/1116/20171116054843136.jpg" alt="">
@@ -13,9 +13,9 @@ var Nav=Vue.component("Nav",{
     <ul class="custom-nav">
         <router-link exact v-for="(item,key) in MenuData" :to="item.url" :key="key" tag="li">{{item.title}}</router-link>
         <router-link to="/login" v-if="!islogin" class="log">登录</router-link>
-        <span class="info" v-if="islogin" @click="show()">
+        <span class="info" v-if="islogin" @click="show">
         {{name}}
-        <span class="logout" v-show="isshow" @click="logout()">退出</span>
+        <span class="logout" v-show="isshow" @click="logout">退出</span>
         </span>
     </ul>
     `,
@@ -94,6 +94,14 @@ var List=Vue.component("List",{
     //         console.log(vm.get("login","name"));
     //     })
     // },
+    beforeRouteEnter(to,from,next){
+        console.log(1);
+        next();
+    },
+    beforeRouteLeave(to,from,next){
+        console.log(2);
+        next();
+    }
 })
 var Con=Vue.component("Con",{
     template:`
@@ -114,12 +122,12 @@ var Con=Vue.component("Con",{
 })
 var Demo=Vue.component("Demo",{
     template:`
-    <div class="Demo">
+    <div style="position: absolute;left:0;top:0;width:100%">
         <Nav></Nav>
-        
+        <div class="Doc">
         <router-view name="left" class="left"></router-view>
         <router-view name="right" class="right"></router-view>
-        
+        </div>
     </div>
     `,
     beforeRouteEnter(to,from,next){
@@ -225,7 +233,7 @@ var Login=Vue.component("Login",{
     template:`
      <div>
         <header class="mui-bar mui-bar-nav">
-        <a @click="back()" class="mui-icon mui-icon-undo"></a>
+        <a @click="back" class="mui-icon mui-icon-undo"></a>
 			<h1 class="mui-title">登录</h1>
 		</header>
 		<div class="mui-content">
@@ -255,7 +263,7 @@ var Login=Vue.component("Login",{
         submit(){
             var obj={"name":document.querySelector("#name").value}
             this.save("login",obj);
-            router.push("/doc")
+            router.push("/demo")
         }
     }
 
