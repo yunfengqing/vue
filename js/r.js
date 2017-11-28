@@ -1,0 +1,35 @@
+var router = new VueRouter({
+    routes:[
+        {
+            path:"/",
+            component:Home,
+        },
+        {
+            path:"*",
+            redirect:("/"),
+        },
+        {
+            path:"/info",
+            component:Info,
+            children:[
+                {
+                    path:"",component:List,
+                },
+                {path:"list/:id",component:Con},
+            ]
+        },
+        {
+            path:"/demo",
+            component:Demo,
+            children:[
+                {path:"",
+                    components:{left:left,right:right},
+                }
+            ]
+        },
+        {
+            path:"/login",
+            component:Login,
+        }
+    ]
+})
